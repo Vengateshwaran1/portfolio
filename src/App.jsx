@@ -1,16 +1,18 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Landing from "./Landing";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero"
+import Skills from "./components/skills";
 
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Landing/>}/>
-        
+    <div>
+      <Navbar/>
+      <Hero />
+      <Skills/>
 
-      </Routes>
-    </BrowserRouter>
+    </div>
+
+    
   );
 }
 
