@@ -18,8 +18,8 @@ import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
-    <div className="mt-24 max-w-[1200px] mx-auto relative">
-        <div className="grid md:grid-cols-2 place-items-center gap-8">
+    <div className="mt-24 max-w-[1300px] mx-auto relative">
+        <div className="grid md:grid-cols-2 place-items-center gap-8 p-0 md:p-2">
             <motion.div
             initial={{ opacity: 0, y: -50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -28,7 +28,7 @@ const Hero = () => {
             >
                 <TypeAnimation
                     sequence={[
-                        "Front-End Devoloper",
+                        "Front-End Dev",
                         1000,
                         "Security Student",
                         1000
@@ -110,19 +110,19 @@ const Hero = () => {
         </div>
 
         <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 2 }}
-            className="flex flex-row text-7xl px-12 md:px-0 w-full justify-center items-center py-24"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 2 }}
+          className="flex flex-row text-7xl px-12 md:px-0 w-full justify-center items-center py-24 "
         >
-            <p className="text-gray-200 mr-6">My Tech Stack</p>
-            <DiHtml5 className="text-orange-600 mx-2" />
-            <DiCss3 className="text-blue-600 mx-2" />
-            <DiJavascript1 className="text-yellow-500 mx-2" />
-            <DiReact className="text-blue-500 mx-2" />
-            <DiNodejsSmall className="text-green-500 mx-2" />
-            <TbBrandTailwind className="text-[#38bdf8] mx-2" />
+          <p className="text-gray-200 mr-6">My Tech Stack</p>
+          <DiHtml5 className="text-orange-600 mx-2 animate-vibrate1" />
+          <DiCss3 className="text-blue-600 mx-2 animate-vibrate2" />
+          <DiJavascript1 className="text-yellow-500 mx-2 animate-vibrate1" />
+          <DiReact className="text-blue-500 mx-2 animate-vibrate2" />
+          <DiNodejsSmall className="text-green-500 mx-2 animate-vibrate1" />
+          <TbBrandTailwind className="text-[#38bdf8] mx-2 animate-vibrate2" />
         </motion.div>
 
         <div className="absolute inset-0 hidden md:block">
