@@ -1,3 +1,5 @@
+import Reveal from "./Reveal"
+
 import {
   DiHtml5,
   DiCss3,
@@ -6,7 +8,6 @@ import {
   DiNodejsSmall,
   DiGithubBadge,
 } from "react-icons/di"
-import Reveal from "./Reveal"
 
 const skills = [
     {

@@ -1,6 +1,7 @@
 import profilepic from "../assets/profile.png";
 import { TypeAnimation } from "react-type-animation";
 import ShinyEffect from "./ShinyEffect";
+import { WiCloudDown } from "react-icons/wi";
 import { TbBrandTailwind } from 'react-icons/tb';import {
   AiOutlineGithub,
   AiOutlineInstagram,
@@ -43,7 +44,7 @@ const Hero = () => {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1, delay: 0.5 }}
-                className="text-gray-200 md:text-7xl text-5xl tracking-tight mb-4"
+                className="text-gray-200 md:text-7xl text-3xl tracking-tight mb-4"
                 >
                     HEY, I AM <br/>
                     <span className="text-purple-500">VENGATESHWARAN</span>
@@ -78,20 +79,21 @@ const Hero = () => {
                     },
                     }}
                     className="z-10 cursor-pointer font-bold text-gray-200 md:w-auto p-4 border border-purple-400 rounded-xl"
+                    
                 >
-                    Download CV
+                    <a href="https://docs.google.com/document/d/1a4Vl2eeDTXp_xJY-87Ze2YkTFnNM2YSp/edit">Resume<WiCloudDown className="mx-5"/></a>
                 </motion.button>
 
                     <div className="flex gap-6 flex-row text-4xl md:text-6xl text-purple-400 z-20">
-                        <motion.a whileHover={{ scale: 1.2 }} href="#">
+                        <motion.a whileHover={{ scale: 1.2 }} href="https://github.com/Vengateshwaran1">
                             <AiOutlineGithub/>
                         </motion.a>
 
-                        <motion.a whileHover={{ scale: 1.2 }} href="#">
+                        <motion.a whileHover={{ scale: 1.2 }} href="https://www.linkedin.com/in/vengateshwaran-k">
                             <AiOutlineLinkedin/>
                         </motion.a>
 
-                        <motion.a whileHover={{ scale: 1.2 }} href="#">
+                        <motion.a whileHover={{ scale: 1.2 }} href="https://www.instagram.com/i_am.venki">
                             <AiOutlineInstagram/>
                         </motion.a>
                     </div>
