@@ -7,7 +7,7 @@ import {
   DiReact,
   DiNodejsSmall,
   DiGithubBadge,
-} from "react-icons/di"
+} from "react-icons/di "
 
 const skills = [
     {
