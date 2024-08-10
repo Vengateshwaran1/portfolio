@@ -1,5 +1,3 @@
-import Reveal from "./Reveal"
-
 import {
   DiHtml5,
   DiCss3,
@@ -7,7 +5,9 @@ import {
   DiReact,
   DiNodejsSmall,
   DiGithubBadge,
-} from "react-icons/di "
+} from "react-icons/di"
+
+import Reveal from "./Reveal"
 
 const skills = [
     {
@@ -31,11 +31,11 @@ const skills = [
 
 const Skills = () => {
   return (
-    <div className="max-w-[650px] mx-auto flex flex-col justify-center px-4 text-gray-200 pb-8 md:py-12">
+    <div className="max-w-[650px] mx-auto flex flex-col justify-center px-4 text-gray-200 pb-8 md:py-12" id="skills">
         <Reveal>
         <h2 className="text-3xl font-bold mb-4 text-center">Skills</h2>
         <p className="text-center mb-8">
-            I worked on some frontend and fullstack projects. Check them <a href="#" className="underline">there</a>.
+            I worked on some frontend and fullstack projects. Check them <a href="portfolio" className="underline">there</a>.
         </p>
 
         <div className="flex flex-col md:flex-row justify-center space-y-8 md:space-y-0 md:space-x-8
