@@ -39,7 +39,7 @@ const Navbar = () => {
             <a href="#">Vengateshwaran</a>
 
             <ul className='hidden md:flex gap-12 z-10 cursor-pointer'>
-                <li><Link to="Skills" smooth={true} offset={50} duration={500}>About</Link></li>
+                <li><Link to="skills" smooth={true} offset={50} duration={500}>About</Link></li>
                 <li><Link to="portfolio" smooth={true} offset={50} duration={500}>Portfolio</Link></li>
                 <li><Link to="contact" smooth={true} offset={50} duration={500}>Contact</Link></li>
             </ul>

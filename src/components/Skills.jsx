@@ -1,11 +1,5 @@
-import {
-  DiHtml5,
-  DiCss3,
-  DiJavascript1,
-  DiReact,
-  DiNodejsSmall,
-  DiGithubBadge,
-} from "react-icons/di"
+import {DiHtml5,DiCss3,DiJavascript1,DiReact,DiNodejsSmall,DiGithubBadge} from "react-icons/di"
+import { Link } from 'react-scroll'
 
 import Reveal from "./Reveal"
 
@@ -35,11 +29,10 @@ const Skills = () => {
         <Reveal>
         <h2 className="text-3xl font-bold mb-4 text-center">Skills</h2>
         <p className="text-center mb-8">
-            I worked on some frontend and fullstack projects. Check them <a href="portfolio" className="underline">there</a>.
+            I worked on some frontend and fullstack projects. Check them <Link to="skills" smooth={true} offset={50} duration={500} className="underline cursor-pointer">there</Link>.
         </p>
 
-        <div className="flex flex-col md:flex-row justify-center space-y-8 md:space-y-0 md:space-x-8
-                        ">
+        <div className="flex flex-col md:flex-row justify-center space-y-8 md:space-y-0 md:space-x-8">
             {skills.map((skill, index) => (
                 <div key={index} className="border border-purple-900 p-6 rounded-lg bg-purple-900/20 shadow-lg w-full md:w-1/2 hover:animate-vibrate3">
                     <h3 className="text-xl font-bold mb-4 text-center">{skill.category}</h3>
