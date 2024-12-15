@@ -7,7 +7,7 @@ const Footer = () => {
             <h3 className='text-2xl text-gray-200 font-semibold'>Vengateshwaran.K</h3>
             <div className='flex flex-row justify-center md:justify-start gap-6 text-gray-400 text-4xl'>
                 <a href="https://github.com/Vengateshwaran1"><FaGithubSquare /></a>
-                <a href="https://www.instagram.com/i_am.venki"><FaInstagram /></a>
+                <a href="https://www.instagram.com/vengateshwaran_"><FaInstagram /></a>
             </div>
         </div>
 

@@ -17,7 +17,8 @@
     "react-router-dom": "^6.26.0",
     "react-scroll": "^1.9.0",
     "react-type-animation": "^3.2.0",
-    "reveal": "^0.0.4"
+    "reveal": "^0.0.4",
+    "template": "file:"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
