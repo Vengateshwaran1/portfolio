@@ -9,7 +9,7 @@ const projects = [
     {
       img: project1,
       title: "Fasten-Your-Belt",
-      description: "car pooling website",
+      description: "Car pooling website",
       links: {
         site: "https://fasten-your-belt.vercel.app/",
         github: "https://github.com/Vengateshwaran1/Fasten-Your-Belt",
