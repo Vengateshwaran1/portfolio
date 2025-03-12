@@ -2,6 +2,9 @@ import profilepic from "../assets/profile.png";
 import { TypeAnimation } from "react-type-animation";
 import ShinyEffect from "./ShinyEffect";
 import { WiCloudDown } from "react-icons/wi";
+import { TbBrandTailwind } from 'react-icons/tb';
+import { SiMongodb,SiExpress } from "react-icons/si";
+import { GrDocker } from "react-icons/gr";
 import { TbBrandTailwind } from "react-icons/tb";
 import {
   AiOutlineGithub,
@@ -119,21 +122,21 @@ const Hero = () => {
         />
       </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1, delay: 2 }}
-        className="flex flex-row md:text-7xl text-4xl px-12 md:px-0 w-full justify-center items-center py-24 "
-      >
-        <p className="text-gray-200 mr-6">My Tech Stack</p>
-        <DiHtml5 className="text-orange-600 mx-2 animate-vibrate1" />
-        <DiCss3 className="text-blue-600 mx-2 animate-vibrate2" />
-        <DiJavascript1 className="text-yellow-500 mx-2 animate-vibrate1" />
-        <DiReact className="text-blue-500 mx-2 animate-vibrate2" />
-        <DiNodejsSmall className="text-green-500 mx-2 animate-vibrate1" />
-        <TbBrandTailwind className="text-[#38bdf8] mx-2 animate-vibrate2" />
-      </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 2 }}
+          className="flex flex-row md:text-7xl text-4xl px-12 md:px-0 w-full justify-center items-center py-24 "
+        >
+          <p className="text-gray-200 mr-6">My Tech Stack</p>
+          <DiHtml5 className="text-orange-600 mx-2 animate-vibrate1" />
+          <DiCss3 className="text-blue-600 mx-2 animate-vibrate2" />
+          <DiJavascript1 className="text-yellow-500 mx-2 animate-vibrate1" />
+          <DiReact className="text-blue-500 mx-2 animate-vibrate2" />
+          <DiNodejsSmall className="text-green-500 mx-2 animate-vibrate1" />
+          <TbBrandTailwind className="text-[#38bdf8] mx-2 animate-vibrate2" />
+        </motion.div>
 
       <div className="absolute inset-0 hidden md:block">
         <ShinyEffect left={0} top={0} size={1400} />
@@ -142,4 +145,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default Hero
