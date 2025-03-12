@@ -2,7 +2,6 @@ import profilepic from "../assets/profile.png";
 import { TypeAnimation } from "react-type-animation";
 import ShinyEffect from "./ShinyEffect";
 import { WiCloudDown } from "react-icons/wi";
-import { TbBrandTailwind } from 'react-icons/tb';
 import { SiMongodb,SiExpress } from "react-icons/si";
 import { GrDocker } from "react-icons/gr";
 import { TbBrandTailwind } from "react-icons/tb";
@@ -136,6 +135,9 @@ const Hero = () => {
           <DiReact className="text-blue-500 mx-2 animate-vibrate2" />
           <DiNodejsSmall className="text-green-500 mx-2 animate-vibrate1" />
           <TbBrandTailwind className="text-[#38bdf8] mx-2 animate-vibrate2" />
+          <SiMongodb className="text-green-500 mx-2 animate-vibrate1" />
+          <SiExpress className="text-zinc-600 mx-2 animate-vibrate2" />
+          <GrDocker className="text-blue-500 mx-2 animate-vibrate1" />
         </motion.div>
 
       <div className="absolute inset-0 hidden md:block">
