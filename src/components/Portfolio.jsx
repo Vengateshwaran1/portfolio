@@ -1,33 +1,36 @@
 import { AiOutlineGithub } from 'react-icons/ai'
 import Reveal from './Reveal';
 import project1 from '../assets/project1.png'
+import project2 from '../assets/project2.png'
+import project3 from '../assets/project3.png'
+
 
 const projects = [
     {
       img: project1,
-      title: "Project #1",
-      description: "UI for car pooling website",
+      title: "Fasten-Your-Belt",
+      description: "car pooling website",
       links: {
         site: "https://fasten-your-belt.vercel.app/",
         github: "https://github.com/Vengateshwaran1/Fasten-Your-Belt",
       },
     },
     {
-        img: project1,
-        title: "Project #2",
-        description: "UI for car pooling website",
+        img: project2,
+        title: "Zephyr",
+        description: "Realtime Chat application",
         links: {
-          site: "https://fasten-your-belt.vercel.app/",
-          github: "https://github.com/Vengateshwaran1/Fasten-Your-Belt",
+          site: "https://zephyr-dxd8.onrender.com/",
+          github: "https://github.com/Vengateshwaran1/Zephyr",
         },
       },
       {
-        img: project1,
-        title: "Project #3",
-        description: "UI for car pooling website",
+        img: project3,
+        title: "Echo Connect",
+        description: "Realtime music player + chat application",
         links: {
-          site: "https://fasten-your-belt.vercel.app/",
-          github: "https://github.com/Vengateshwaran1/Fasten-Your-Belt",
+          site: "https://echo-connect.onrender.com/",
+          github: "https://github.com/Vengateshwaran1/Echo-Connect",
         },
       },
   ]
