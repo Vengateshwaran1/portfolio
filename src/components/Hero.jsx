@@ -30,7 +30,7 @@ const Hero = () => {
           transition={{ duration: 1 }}
         >
           <TypeAnimation
-            sequence={["Front-End Dev", 1000, "Security Student", 1000]}
+            sequence={["Full-stack Dev", 1000, "Security Student", 1000]}
             speed={50}
             repeat={Infinity}
             className="font-bold text-gray-400 text-xl md:text-5xl italic- mb-4"
@@ -54,7 +54,7 @@ const Hero = () => {
             transition={{ duration: 1, delay: 1 }}
             className="text-gray-300 max-w-[300px] md:max-w-[500px] md:text-2xl text-lg mb-6"
           >
-            I am a passionate fullstack developer.
+            I am a passionate full-stack developer.
           </motion.p>
 
           <motion.div
