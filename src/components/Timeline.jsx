@@ -56,7 +56,7 @@ const Timeline = () => {
     <section id="timeline" className="relative py-32 md:py-44">
       <div className="container-x">
         <Reveal>
-          <p className="eyebrow mb-6">— 04 / Journey</p>
+          <p className="eyebrow mb-6">Journey</p>
         </Reveal>
         <h2 className="display-lg text-white text-balance max-w-3xl mb-16">
           <SplitText by="word" stagger={0.06}>A timeline of</SplitText>{' '}

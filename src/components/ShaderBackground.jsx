@@ -63,11 +63,11 @@ const ShaderBackground = () => {
         vec3 deep   = vec3(0.427, 0.157, 0.851);  // #6D28D9
 
         vec3 col = base;
-        col += silver * aurora * 0.22;
-        col += violet * aurora * 0.30;
-        col += deep   * pow(aurora, 2.0) * 0.45;
+        col += silver * aurora * 0.14;
+        col += violet * aurora * 0.18;
+        col += deep   * pow(aurora, 2.0) * 0.28;
         // mouse glow
-        col += violet * (0.09 / (0.18 + m*1.6));
+        col += violet * (0.05 / (0.2 + m*1.8));
         // vignette
         float vig = smoothstep(1.6, 0.4, length(p));
         col *= mix(0.55, 1.0, vig);

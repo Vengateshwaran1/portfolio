@@ -88,16 +88,16 @@ const Portfolio = () => {
     <section id="work" ref={sectionRef} className="relative py-32 md:py-44 overflow-hidden">
       <div className="container-x">
         <Reveal>
-          <p className="eyebrow mb-6">— 03 / Selected Work</p>
+          <p className="eyebrow mb-6">Selected Work</p>
         </Reveal>
         <div className="flex items-end justify-between flex-wrap gap-6 mb-14">
           <h2 className="display-lg text-white text-balance max-w-3xl">
             <SplitText by="word" stagger={0.06}>Shipped &amp; live —</SplitText>{' '}
             <span className="gradient-text"><SplitText by="word" stagger={0.06} delay={0.15}>not just screenshots.</SplitText></span>
           </h2>
-          <span className="hidden md:flex items-center gap-2 text-white/40 font-mono text-xs uppercase tracking-[0.25em]">
-            <span className="w-8 h-px bg-amber-400/60" />
-            Scroll horizontally
+          <span className="hidden md:flex items-center gap-2 text-white/30 font-mono text-xs uppercase tracking-[0.25em]">
+            <span className="w-8 h-px bg-white/20" />
+            Scroll
           </span>
         </div>
       </div>

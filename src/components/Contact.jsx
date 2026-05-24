@@ -45,7 +45,7 @@ const Contact = () => {
     <section id="contact" className="relative py-32 md:py-44">
       <div className="container-x">
         <Reveal>
-          <p className="eyebrow mb-6">— 06 / Contact</p>
+          <p className="eyebrow mb-6">Contact</p>
         </Reveal>
         <h2 className="display-xl text-white text-balance">
           <SplitText by="word" stagger={0.06}>Let&apos;s build</SplitText>{' '}

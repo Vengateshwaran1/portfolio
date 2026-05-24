@@ -12,7 +12,7 @@ const Skills = () => {
     <section id="skills" className="relative py-32 md:py-44">
       <div className="container-x">
         <Reveal>
-          <p className="eyebrow mb-6">— 02 / Skills</p>
+          <p className="eyebrow mb-6">Skills</p>
         </Reveal>
         <h2 className="display-lg text-white text-balance max-w-3xl">
           <SplitText by="word" stagger={0.06}>Tools I use to</SplitText>{' '}

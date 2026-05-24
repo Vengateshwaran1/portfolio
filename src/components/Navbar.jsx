@@ -66,7 +66,6 @@ const Navbar = () => {
                   className="px-4 py-2 rounded-xl text-sm text-white/70 hover:text-white transition-colors group"
                   strength={0.25}
                 >
-                  <span className="font-mono text-[10px] text-amber-400/60 mr-2">{l.num}</span>
                   {l.label}
                 </MagneticButton>
               </li>
