@@ -1,19 +1,102 @@
-import { FaGithubSquare, FaInstagram } from 'react-icons/fa'
+import { motion } from 'framer-motion'
+import { HiArrowUp } from 'react-icons/hi2'
+import { AiOutlineGithub, AiOutlineLinkedin, AiOutlineInstagram, AiOutlineMail } from 'react-icons/ai'
+import MagneticButton from './primitives/MagneticButton'
+import { scrollTo } from './providers/LenisProvider'
 
 const Footer = () => {
   return (
-    <div className='bottom-0 w-full flex md:flex-row flex-col gap-y-4 md:gap-y-0 justify-between items-center p-20 md:p-10 text-sm md:text-lg mt-12'>
-        <div className='space-y-4'>
-            <h3 className='text-2xl text-gray-200 font-semibold'>Vengateshwaran.K</h3>
-            <div className='flex flex-row justify-center md:justify-start gap-6 text-gray-400 text-4xl'>
-                <a href="https://github.com/Vengateshwaran1"><FaGithubSquare /></a>
-                <a href="https://www.instagram.com/vengateshwaran_"><FaInstagram /></a>
+    <footer className="relative pt-24 pb-10 border-t border-white/[0.06] mt-12">
+      <div className="container-x">
+        <div className="flex items-end justify-between flex-wrap gap-10 mb-20">
+          <div className="max-w-xl">
+            <p className="eyebrow mb-4">— Let&apos;s connect</p>
+            <h3 className="display-lg text-white text-balance">
+              Got an idea?
+              <br />
+              <span className="gradient-text">Let&apos;s ship it.</span>
+            </h3>
+            <a
+              href="mailto:kvengateshwaran1@gmail.com"
+              data-cursor="hover"
+              className="mt-6 inline-block text-amber-400 hover:text-amber-300 font-mono text-sm md:text-base"
+            >
+              kvengateshwaran1@gmail.com
+            </a>
+          </div>
+
+          <MagneticButton
+            onClick={() => scrollTo(0)}
+            data-cursor="view"
+            data-cursor-label="Top"
+            strength={0.5}
+            className="group w-24 h-24 rounded-full glass-amber grid place-items-center text-amber-400 hover:bg-amber-400 hover:text-ink-950 transition-colors"
+          >
+            <div className="flex flex-col items-center">
+              <HiArrowUp className="text-2xl group-hover:-translate-y-1 transition-transform" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] mt-1">Top</span>
             </div>
+          </MagneticButton>
         </div>
 
-        <p className='text-gray-400'>@2024 Vengateshwaran.K</p>
-        
-    </div>
+        <div className="ring-divider mb-8" />
+
+        <div className="flex flex-wrap items-center justify-between gap-6 text-white/40 text-sm">
+          <div className="flex items-center gap-3">
+            <span className="w-8 h-8 rounded-lg bg-amber-400 text-ink-950 grid place-items-center font-display font-bold">V</span>
+            <span className="font-display text-white">Vengateshwaran<span className="text-amber-400">.</span>K</span>
+            <span className="hidden md:inline text-white/30">·</span>
+            <span className="hidden md:inline">Coimbatore, IN</span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            {[
+              { Icon: AiOutlineGithub, href: 'https://github.com/Vengateshwaran1', label: 'GitHub' },
+              { Icon: AiOutlineLinkedin, href: 'https://www.linkedin.com/in/vengateshwaran-k', label: 'LinkedIn' },
+              { Icon: AiOutlineInstagram, href: 'https://www.instagram.com/vengateshwaran_', label: 'Instagram' },
+              { Icon: AiOutlineMail, href: 'mailto:kvengateshwaran1@gmail.com', label: 'Email' },
+            ].map(({ Icon, href, label }) => (
+              <MagneticButton
+                key={label}
+                as="a"
+                href={href}
+                target={href.startsWith('http') ? '_blank' : undefined}
+                rel="noopener"
+                aria-label={label}
+                data-cursor="hover"
+                strength={0.4}
+                className="w-10 h-10 rounded-full glass grid place-items-center text-white/70 hover:text-amber-400 transition-colors"
+              >
+                <Icon />
+              </MagneticButton>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-4">
+            <span className="font-mono text-xs">© {new Date().getFullYear()} Vengateshwaran.K</span>
+            <span className="flex items-center gap-1.5 font-mono text-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              Available
+            </span>
+          </div>
+        </div>
+
+        {/* Mega wordmark */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2 }}
+          aria-hidden
+          className="mt-16 select-none"
+        >
+          <div className="font-display font-bold text-white/[0.04] leading-none tracking-ultratight text-center flex justify-center items-center"
+               style={{ fontSize: 'clamp(4rem, 18vw, 16rem)' }}>
+            VENGATESHWARAN
+          </div>
+        </motion.div>
+      </div>
+    </footer>
   )
 }
 
