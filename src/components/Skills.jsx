@@ -9,7 +9,7 @@ import { cn } from '../lib/utils'
 
 const Skills = () => {
   return (
-    <section id="skills" className="relative py-32 md:py-44">
+    <section id="skills" className="relative py-20 md:py-44">
       <div className="container-x">
         <Reveal>
           <p className="eyebrow mb-6">Skills</p>
@@ -19,9 +19,9 @@ const Skills = () => {
           <span className="gradient-text"><SplitText by="word" stagger={0.06} delay={0.15}>build & break things.</SplitText></span>
         </h2>
 
-        <div className="mt-16 grid grid-cols-12 gap-4 md:gap-5">
+        <div className="mt-10 md:mt-16 grid grid-cols-12 gap-3 md:gap-5">
           {/* Big card: Frontend */}
-          <Bento className="col-span-12 md:col-span-7 md:row-span-2 min-h-[360px]">
+          <Bento className="col-span-12 md:col-span-7 md:row-span-2 min-h-[280px] md:min-h-[360px]">
             <div className="flex items-center justify-between mb-6">
               <Tag>Frontend</Tag>
               <HiOutlineSparkles className="text-amber-400" size={24} />
@@ -32,7 +32,7 @@ const Skills = () => {
             <p className="text-white/55 max-w-md text-pretty">
               React + Tailwind for dynamic, accessible UIs. Strong focus on motion, typography, and responsive layouts that scale.
             </p>
-            <div className="mt-8 grid grid-cols-4 gap-3">
+            <div className="mt-6 md:mt-8 grid grid-cols-4 gap-2 md:gap-3">
               {[
                 { Icon: DiReact, c: '#61DAFB', n: 'React' },
                 { Icon: DiJavascript1, c: '#F7DF1E', n: 'JS' },
@@ -51,7 +51,7 @@ const Skills = () => {
           </Bento>
 
           {/* Backend */}
-          <Bento className="col-span-12 md:col-span-5 min-h-[170px]">
+          <Bento className="col-span-12 md:col-span-5 min-h-[140px] md:min-h-[170px]">
             <Tag>Backend</Tag>
             <h3 className="mt-4 font-display text-2xl text-white font-bold">APIs that scale.</h3>
             <div className="mt-5 flex flex-wrap gap-2">
@@ -69,7 +69,7 @@ const Skills = () => {
           </Bento>
 
           {/* Security */}
-          <Bento className="col-span-12 md:col-span-5 min-h-[170px] relative overflow-hidden">
+          <Bento className="col-span-12 md:col-span-5 min-h-[140px] md:min-h-[170px] relative overflow-hidden">
             <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full bg-amber-400/10 blur-3xl" />
             <div className="flex items-start justify-between">
               <Tag>Security</Tag>
@@ -82,7 +82,7 @@ const Skills = () => {
           </Bento>
 
           {/* Data */}
-          <Bento className="col-span-6 md:col-span-3 min-h-[170px]">
+          <Bento className="col-span-6 md:col-span-3 min-h-[130px] md:min-h-[170px]">
             <Tag>Data</Tag>
             <div className="mt-5 space-y-3">
               {[
@@ -98,7 +98,7 @@ const Skills = () => {
           </Bento>
 
           {/* DevOps */}
-          <Bento className="col-span-6 md:col-span-4 min-h-[170px]">
+          <Bento className="col-span-6 md:col-span-4 min-h-[130px] md:min-h-[170px]">
             <Tag>DevOps · Cloud</Tag>
             <div className="mt-5 space-y-3">
               <div className="flex items-center gap-3">
@@ -121,7 +121,7 @@ const Skills = () => {
           </Bento>
 
           {/* Currently learning */}
-          <Bento className="col-span-12 md:col-span-5 min-h-[170px] relative overflow-hidden">
+          <Bento className="col-span-12 md:col-span-5 min-h-[130px] md:min-h-[170px] relative overflow-hidden">
             <div className="flex items-start justify-between">
               <Tag>Currently Learning</Tag>
               <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
@@ -147,7 +147,7 @@ const Bento = ({ className, children }) => (
   <Reveal className={cn('group h-full', className)}>
     <TiltCard
       max={4}
-      className="relative h-full glass rounded-3xl p-6 md:p-7 overflow-hidden hover:border-amber-400/30 transition-colors"
+      className="relative h-full glass rounded-2xl md:rounded-3xl p-5 md:p-7 overflow-hidden hover:border-amber-400/30 transition-colors"
     >
       <div className="relative z-10 h-full">{children}</div>
     </TiltCard>

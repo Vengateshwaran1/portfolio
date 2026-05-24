@@ -85,12 +85,12 @@ const Portfolio = () => {
   }, [])
 
   return (
-    <section id="work" ref={sectionRef} className="relative py-32 md:py-44 overflow-hidden">
+    <section id="work" ref={sectionRef} className="relative py-20 md:py-44 overflow-hidden">
       <div className="container-x">
         <Reveal>
           <p className="eyebrow mb-6">Selected Work</p>
         </Reveal>
-        <div className="flex items-end justify-between flex-wrap gap-6 mb-14">
+        <div className="flex items-end justify-between flex-wrap gap-4 md:gap-6 mb-8 md:mb-14">
           <h2 className="display-lg text-white text-balance max-w-3xl">
             <SplitText by="word" stagger={0.06}>Shipped &amp; live —</SplitText>{' '}
             <span className="gradient-text"><SplitText by="word" stagger={0.06} delay={0.15}>not just screenshots.</SplitText></span>
@@ -102,18 +102,18 @@ const Portfolio = () => {
         </div>
       </div>
 
-      {/* Horizontal pinned rail */}
-      <div className="md:h-[100vh] flex md:items-center overflow-x-auto md:overflow-visible">
+      {/* Horizontal pinned rail (desktop) / vertical stack (mobile) */}
+      <div className="md:h-[100vh] flex md:items-center">
         <div
           ref={trackRef}
-          className="flex md:flex-row flex-col gap-6 md:gap-10 px-6 md:px-16 will-change-transform"
+          className="flex md:flex-row flex-col gap-5 md:gap-10 px-4 md:px-16 will-change-transform w-full md:w-auto"
         >
           {projects.map((p, i) => (
             <Card key={p.n} p={p} i={i} />
           ))}
-          <div className="hidden md:flex flex-col justify-center items-start min-w-[420px] pr-20">
+          <div className="flex flex-col justify-center items-center md:items-start min-w-0 md:min-w-[420px] md:pr-20 py-6 md:py-0">
             <p className="eyebrow mb-3">— More</p>
-            <h3 className="font-display text-4xl text-white max-w-xs">
+            <h3 className="font-display text-2xl md:text-4xl text-white max-w-xs text-center md:text-left">
               Want to see <span className="gradient-text">more</span>?
             </h3>
             <a
@@ -122,7 +122,7 @@ const Portfolio = () => {
               rel="noopener"
               data-cursor="view"
               data-cursor-label="GitHub"
-              className="mt-6 inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-medium"
+              className="mt-4 md:mt-6 inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-medium text-sm md:text-base"
             >
               See all on GitHub <HiArrowUpRight />
             </a>
@@ -134,13 +134,13 @@ const Portfolio = () => {
 }
 
 const Card = ({ p }) => (
-  <div className="md:min-w-[680px] md:w-[680px] shrink-0">
+  <div className="w-full md:min-w-[680px] md:w-[680px] shrink-0">
     <TiltCard max={5} className="group glass-metallic rounded-3xl overflow-hidden">
       <BrowserFrame url={p.links.site} title={p.title}>
         <LivePreview src={p.links.site} title={p.title} />
       </BrowserFrame>
 
-      <div className="p-6 md:p-7">
+      <div className="p-4 md:p-7">
         <div className="flex items-start justify-between gap-4 mb-3">
           <span className="font-mono text-xs uppercase tracking-[0.3em] text-amber-400/90">
             {p.n} / {p.tag}
@@ -168,7 +168,7 @@ const Card = ({ p }) => (
             </a>
           </div>
         </div>
-        <h3 className="font-display text-3xl md:text-4xl text-white font-bold tracking-tight">
+        <h3 className="font-display text-2xl md:text-4xl text-white font-bold tracking-tight">
           {p.title}
         </h3>
         <p className="mt-3 text-white/65 text-sm md:text-base max-w-lg">
@@ -195,11 +195,11 @@ const BrowserFrame = ({ url, title, children }) => {
   return (
     <div className="relative border-b border-white/[0.06]">
       {/* Top chrome bar */}
-      <div className="flex items-center gap-3 px-4 py-3 bg-white/[0.03] border-b border-white/[0.06]">
-        <div className="flex items-center gap-1.5">
-          <span className="w-3 h-3 rounded-full bg-red-400/70" />
-          <span className="w-3 h-3 rounded-full bg-amber-300/70" />
-          <span className="w-3 h-3 rounded-full bg-emerald-400/70" />
+      <div className="flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2.5 md:py-3 bg-white/[0.03] border-b border-white/[0.06]">
+        <div className="flex items-center gap-1 md:gap-1.5">
+          <span className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-red-400/70" />
+          <span className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-amber-300/70" />
+          <span className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-emerald-400/70" />
         </div>
         <div className="flex-1 mx-2">
           <div className="px-3 py-1 rounded-md bg-black/30 border border-white/[0.05] font-mono text-[11px] text-white/55 truncate">

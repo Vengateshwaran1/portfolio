@@ -53,12 +53,12 @@ const Timeline = () => {
   const h = useTransform(fill, [0, 1], ['0%', '100%'])
 
   return (
-    <section id="timeline" className="relative py-32 md:py-44">
+    <section id="timeline" className="relative py-20 md:py-44">
       <div className="container-x">
         <Reveal>
           <p className="eyebrow mb-6">Journey</p>
         </Reveal>
-        <h2 className="display-lg text-white text-balance max-w-3xl mb-16">
+        <h2 className="display-lg text-white text-balance max-w-3xl mb-10 md:mb-16">
           <SplitText by="word" stagger={0.06}>A timeline of</SplitText>{' '}
           <span className="gradient-text"><SplitText by="word" stagger={0.06} delay={0.15}>shipping & learning.</SplitText></span>
         </h2>
@@ -71,7 +71,7 @@ const Timeline = () => {
             className="absolute top-0 left-2 md:left-1/2 md:-translate-x-1/2 w-px bg-gradient-to-b from-amber-400 via-amber-400/60 to-transparent"
           />
 
-          <div className="space-y-12 md:space-y-20">
+          <div className="space-y-8 md:space-y-20">
             {events.map((e, i) => (
               <Item key={i} e={e} i={i} />
             ))}
@@ -93,13 +93,13 @@ const Item = ({ e, i }) => {
         </div>
 
         {/* Card */}
-        <div className={`pl-10 md:pl-0 ${right ? 'md:text-right md:pr-16' : 'md:pl-16'}`}>
+        <div className={`pl-8 md:pl-0 ${right ? 'md:text-right md:pr-16' : 'md:pl-16'}`}>
           <div className={`inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.3em] text-amber-400/80 mb-3 ${right ? 'md:flex-row-reverse' : ''}`}>
             <e.Icon /> {e.when}
           </div>
-          <h3 className="font-display text-2xl md:text-3xl font-bold text-white">{e.title}</h3>
-          <p className="mt-1 text-white/50 text-sm">{e.where}</p>
-          <p className="mt-4 text-white/65 max-w-md text-pretty">{e.body}</p>
+          <h3 className="font-display text-xl md:text-3xl font-bold text-white">{e.title}</h3>
+          <p className="mt-1 text-white/50 text-xs md:text-sm">{e.where}</p>
+          <p className="mt-3 md:mt-4 text-white/65 text-sm md:text-base max-w-md text-pretty">{e.body}</p>
         </div>
         <div />
       </div>
