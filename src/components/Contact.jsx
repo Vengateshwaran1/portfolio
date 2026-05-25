@@ -42,7 +42,7 @@ const Contact = () => {
   }
 
   return (
-    <section id="contact" className="relative py-32 md:py-44">
+    <section id="contact" className="relative py-20 md:py-44">
       <div className="container-x">
         <Reveal>
           <p className="eyebrow mb-6">Contact</p>
@@ -52,7 +52,7 @@ const Contact = () => {
           <span className="gradient-text"><SplitText by="word" stagger={0.06} delay={0.15}>something great.</SplitText></span>
         </h2>
 
-        <div className="mt-16 grid grid-cols-12 gap-8 lg:gap-12">
+        <div className="mt-10 md:mt-16 grid grid-cols-12 gap-6 lg:gap-12">
           <div className="col-span-12 lg:col-span-5">
             <Reveal>
               <p className="text-white/65 text-lg md:text-xl leading-relaxed text-pretty">
@@ -81,7 +81,7 @@ const Contact = () => {
 
           <div className="col-span-12 lg:col-span-7">
             <Reveal delay={0.1}>
-              <form onSubmit={submit} className="relative glass rounded-3xl p-6 md:p-10 overflow-hidden">
+              <form onSubmit={submit} className="relative glass rounded-2xl md:rounded-3xl p-5 md:p-10 overflow-hidden">
                 <AnimatePresence>
                   {status === 'success' && (
                     <motion.div
@@ -110,7 +110,7 @@ const Contact = () => {
                   )}
                 </AnimatePresence>
 
-                <div className="grid md:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
                   <Field
                     label="Name"
                     value={state.name}
@@ -139,7 +139,7 @@ const Contact = () => {
                   />
                 </div>
 
-                <div className="mt-7 flex items-center justify-between flex-wrap gap-4">
+                <div className="mt-6 md:mt-7 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
                   <p className="text-xs text-white/40 font-mono">
                     {status === 'error' ? 'Something went wrong — try again.' : 'Replies usually within 24h'}
                   </p>
@@ -148,7 +148,7 @@ const Contact = () => {
                     data-cursor="view"
                     data-cursor-label="Send"
                     disabled={status === 'submitting'}
-                    className="px-8 py-4 rounded-full bg-amber-400 text-ink-950 font-semibold shadow-amber disabled:opacity-60"
+                    className="px-8 py-3.5 md:py-4 rounded-full bg-amber-400 text-ink-950 font-semibold shadow-amber disabled:opacity-60 w-full sm:w-auto justify-center"
                   >
                     {status === 'submitting' ? 'Sending…' : (<>Send Message <HiArrowUpRight className="ml-2" /></>)}
                   </MagneticButton>

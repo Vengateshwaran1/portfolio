@@ -42,7 +42,7 @@ const ResumeModal = ({ open, onClose }) => {
                 <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
                 <div>
                   <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-amber-400/80">Resume · PDF</div>
-                  <div className="font-display text-white text-sm md:text-base">Vengateshwaran K.</div>
+                  <div className="font-display text-white text-sm md:text-base">Vengateshwaran</div>
                 </div>
               </div>
               <div className="flex items-center gap-2">

@@ -6,9 +6,9 @@ import { scrollTo } from './providers/LenisProvider'
 
 const Footer = () => {
   return (
-    <footer className="relative pt-24 pb-10 border-t border-white/[0.06] mt-12">
+    <footer className="relative pt-16 md:pt-24 pb-8 md:pb-10 border-t border-white/[0.06] mt-8 md:mt-12">
       <div className="container-x">
-        <div className="flex items-end justify-between flex-wrap gap-10 mb-20">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 md:gap-10 mb-12 md:mb-20">
           <div className="max-w-xl">
             <p className="eyebrow mb-4">— Let&apos;s connect</p>
             <h3 className="display-lg text-white text-balance">
@@ -30,7 +30,7 @@ const Footer = () => {
             data-cursor="view"
             data-cursor-label="Top"
             strength={0.5}
-            className="group w-24 h-24 rounded-full glass-amber grid place-items-center text-amber-400 hover:bg-amber-400 hover:text-ink-950 transition-colors"
+            className="group w-16 h-16 md:w-24 md:h-24 rounded-full glass-amber grid place-items-center text-amber-400 hover:bg-amber-400 hover:text-ink-950 transition-colors self-end md:self-auto"
           >
             <div className="flex flex-col items-center">
               <HiArrowUp className="text-2xl group-hover:-translate-y-1 transition-transform" />
@@ -41,7 +41,7 @@ const Footer = () => {
 
         <div className="ring-divider mb-8" />
 
-        <div className="flex flex-wrap items-center justify-between gap-6 text-white/40 text-sm">
+        <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center justify-between gap-4 md:gap-6 text-white/40 text-sm">
           <div className="flex items-center gap-3">
             <span className="w-8 h-8 rounded-lg bg-amber-400 text-ink-950 grid place-items-center font-display font-bold">V</span>
             <span className="font-display text-white">Vengateshwaran<span className="text-amber-400">.</span>K</span>
@@ -72,7 +72,7 @@ const Footer = () => {
             ))}
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 md:gap-4">
             <span className="font-mono text-xs">© {new Date().getFullYear()} Vengateshwaran.K</span>
             <span className="flex items-center gap-1.5 font-mono text-xs">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -88,7 +88,7 @@ const Footer = () => {
           viewport={{ once: true }}
           transition={{ duration: 1.2 }}
           aria-hidden
-          className="mt-16 select-none"
+          className="mt-10 md:mt-16 select-none overflow-hidden"
         >
           <div className="font-display font-bold text-white/[0.04] leading-none tracking-ultratight text-center flex justify-center items-center"
                style={{ fontSize: 'clamp(4rem, 18vw, 16rem)' }}>

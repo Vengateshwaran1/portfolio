@@ -40,16 +40,16 @@ const Row = ({ reverse }) => (
 )
 
 const About = () => (
-  <section className="relative py-20 md:py-28 overflow-hidden">
+  <section className="relative py-12 md:py-28 overflow-hidden">
     <div className="container-x">
-      <div className="ring-divider mb-12" />
+      <div className="ring-divider mb-8 md:mb-12" />
     </div>
     <div className="flex w-max animate-marquee will-change-transform">
       <Row />
       <Row />
     </div>
-    <div className="pointer-events-none absolute inset-y-0 left-0 w-24 md:w-40 bg-gradient-to-r from-ink-950 to-transparent z-10" />
-    <div className="pointer-events-none absolute inset-y-0 right-0 w-24 md:w-40 bg-gradient-to-l from-ink-950 to-transparent z-10" />
+    <div className="pointer-events-none absolute inset-y-0 left-0 w-16 md:w-40 bg-gradient-to-r from-ink-950 to-transparent z-10" />
+    <div className="pointer-events-none absolute inset-y-0 right-0 w-16 md:w-40 bg-gradient-to-l from-ink-950 to-transparent z-10" />
   </section>
 )
 
