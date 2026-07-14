@@ -88,12 +88,28 @@ const Footer = () => {
           viewport={{ once: true }}
           transition={{ duration: 1.2 }}
           aria-hidden
-          className="mt-10 md:mt-16 select-none overflow-hidden"
+          className="mt-10 md:mt-16 select-none"
         >
-          <div className="font-display font-bold text-white/[0.04] leading-none tracking-ultratight text-center flex justify-center items-center"
-               style={{ fontSize: 'clamp(4rem, 18vw, 16rem)' }}>
-            VENGATESHWARAN
-          </div>
+          {/* textLength pins the name to the viewBox width, so it always fits
+              its container exactly — no clipping at any viewport. */}
+          <svg
+            viewBox="0 0 1000 150"
+            className="w-full h-auto block overflow-visible"
+            role="presentation"
+            focusable="false"
+          >
+            <text
+              x="0"
+              y="118"
+              textLength="1000"
+              lengthAdjust="spacingAndGlyphs"
+              fill="rgba(255,255,255,0.045)"
+              className="font-display font-bold"
+              style={{ fontSize: '128px', letterSpacing: '-0.06em' }}
+            >
+              VENGATESHWARAN
+            </text>
+          </svg>
         </motion.div>
       </div>
     </footer>

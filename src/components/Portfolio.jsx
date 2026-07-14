@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { HiArrowUpRight } from 'react-icons/hi2'
 import { AiOutlineGithub } from 'react-icons/ai'
 import { gsap, ScrollTrigger } from '../lib/gsap'
@@ -7,9 +7,36 @@ import SplitText from './primitives/SplitText'
 import TiltCard from './primitives/TiltCard'
 import { prefersReducedMotion } from '../lib/utils'
 
+/* The rail starts flush with .container-x's left edge at every width, so the
+   first card lines up with the heading above it. */
+const RAIL_GUTTER = 'max(1rem, calc((100vw - 1320px) / 2 + 2.5rem))'
+
 const projects = [
   {
     n: '01',
+    title: 'Alagist',
+    tag: 'Contribution · Product',
+    description:
+      'Salon booking and management platform. Contributed frontend work across the customer booking flow and the vendor-side dashboard for appointments and services.',
+    stack: ['React', 'Node', 'REST API', 'Tailwind'],
+    links: {
+      site: 'https://alagist.com/',
+    },
+  },
+  {
+    n: '02',
+    title: 'Pipeline Forge',
+    tag: 'Frontend · Tooling',
+    description:
+      'Visual pipeline builder — drag nodes onto a canvas, wire them together, and submit the graph to a FastAPI backend that validates it as a DAG. Config-driven node abstraction and a dark glassmorphic design system.',
+    stack: ['React', 'ReactFlow', 'Zustand', 'Framer Motion', 'FastAPI'],
+    links: {
+      site: 'https://pipeline-forge-two.vercel.app/',
+      github: 'https://github.com/Vengateshwaran1/pipelineForge',
+    },
+  },
+  {
+    n: '03',
     title: 'Zephyr',
     tag: 'Realtime · Chat',
     description:
@@ -21,7 +48,7 @@ const projects = [
     },
   },
   {
-    n: '02',
+    n: '04',
     title: 'Echo Connect',
     tag: 'Audio · Social',
     description:
@@ -33,7 +60,7 @@ const projects = [
     },
   },
   {
-    n: '03',
+    n: '05',
     title: 'Fasten Your Belt',
     tag: 'Mobility · Full-stack',
     description:
@@ -48,72 +75,114 @@ const projects = [
 
 const Portfolio = () => {
   const sectionRef = useRef(null)
+  const railRef = useRef(null)
   const trackRef = useRef(null)
+  const barRef = useRef(null)
+
+  // Mobile drives the progress bar from the rail's own scroll position.
+  const syncFromRail = useCallback(() => {
+    const rail = railRef.current
+    const bar = barRef.current
+    if (!rail || !bar) return
+    const max = rail.scrollWidth - rail.clientWidth
+    bar.style.width = `${Math.max(6, (max > 0 ? rail.scrollLeft / max : 0) * 100)}%`
+  }, [])
+
+  useEffect(() => {
+    const rail = railRef.current
+    if (!rail) return
+    rail.addEventListener('scroll', syncFromRail, { passive: true })
+    syncFromRail()
+    return () => rail.removeEventListener('scroll', syncFromRail)
+  }, [syncFromRail])
 
   useEffect(() => {
     if (prefersReducedMotion()) return
     const section = sectionRef.current
+    const rail = railRef.current
     const track = trackRef.current
-    if (!section || !track) return
+    if (!section || !rail || !track) return
 
-    const ctx = gsap.context(() => {
-      const setup = () => {
-        const isDesktop = window.matchMedia('(min-width: 768px)').matches
-        if (!isDesktop) return null
-        const totalWidth = track.scrollWidth
-        const viewport = window.innerWidth
-        const distance = totalWidth - viewport + 80
-        return gsap.to(track, {
-          x: -distance,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top top',
-            end: () => `+=${distance + 100}`,
-            scrub: 1,
-            pin: true,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
+    const mm = gsap.matchMedia()
+
+    // Desktop: the page's vertical scroll drives the rail horizontally. The pin
+    // lasts exactly as long as the track needs to travel, so it stays 1:1 with
+    // the wheel and adding projects never distorts the scroll speed.
+    mm.add('(min-width: 768px)', () => {
+      const distance = () => Math.max(0, track.scrollWidth - rail.clientWidth)
+
+      const tween = gsap.to(track, {
+        x: () => -distance(),
+        ease: 'none',
+        force3D: true,
+        scrollTrigger: {
+          trigger: rail,
+          start: 'top top',
+          end: () => `+=${distance()}`,
+          scrub: 0.6,
+          pin: rail,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            if (barRef.current) {
+              barRef.current.style.width = `${Math.max(6, self.progress * 100)}%`
+            }
           },
-        })
-      }
-      const tween = setup()
-      return () => tween?.scrollTrigger?.kill()
-    }, section)
+        },
+      })
 
-    return () => ctx.revert()
+      return () => tween.scrollTrigger?.kill()
+    })
+
+    const onLoad = () => ScrollTrigger.refresh()
+    window.addEventListener('load', onLoad)
+    return () => {
+      window.removeEventListener('load', onLoad)
+      mm.revert()
+    }
   }, [])
 
   return (
-    <section id="work" ref={sectionRef} className="relative py-20 md:py-44 overflow-hidden">
+    <section id="work" ref={sectionRef} className="relative py-20 md:py-24">
       <div className="container-x">
         <Reveal>
           <p className="eyebrow mb-6">Selected Work</p>
         </Reveal>
-        <div className="flex items-end justify-between flex-wrap gap-4 md:gap-6 mb-8 md:mb-14">
+        <div className="flex items-end justify-between flex-wrap gap-4 md:gap-6 mb-8 md:mb-12">
           <h2 className="display-lg text-white text-balance max-w-3xl">
             <SplitText by="word" stagger={0.06}>Shipped &amp; live —</SplitText>{' '}
             <span className="gradient-text"><SplitText by="word" stagger={0.06} delay={0.15}>not just screenshots.</SplitText></span>
           </h2>
-          <span className="hidden md:flex items-center gap-2 text-white/30 font-mono text-xs uppercase tracking-[0.25em]">
+          <span className="hidden md:flex items-center gap-3 text-white/30 font-mono text-xs uppercase tracking-[0.25em]">
+            Scroll to pan
             <span className="w-8 h-px bg-white/20" />
-            Scroll
+            <HiArrowUpRight className="rotate-45" />
           </span>
         </div>
       </div>
 
-      {/* Horizontal pinned rail (desktop) / vertical stack (mobile) */}
-      <div className="md:h-[100vh] flex md:items-center">
+      {/* Desktop: overflow hidden, GSAP translates the track.
+          Mobile: the same box is a native swipe rail — touch is never hijacked. */}
+      <div
+        ref={railRef}
+        className="no-scrollbar overflow-x-auto md:overflow-hidden snap-x snap-mandatory md:snap-none overscroll-x-contain md:h-screen md:flex md:items-center"
+        style={{ scrollPaddingLeft: RAIL_GUTTER }}
+      >
         <div
           ref={trackRef}
-          className="flex md:flex-row flex-col gap-5 md:gap-10 px-4 md:px-16 will-change-transform w-full md:w-auto"
+          className="flex gap-5 md:gap-10 w-max will-change-transform"
+          style={{ paddingLeft: RAIL_GUTTER, paddingRight: RAIL_GUTTER }}
         >
-          {projects.map((p, i) => (
-            <Card key={p.n} p={p} i={i} />
+          {projects.map((p) => (
+            <Card key={p.n} p={p} />
           ))}
-          <div className="flex flex-col justify-center items-center md:items-start min-w-0 md:min-w-[420px] md:pr-20 py-6 md:py-0">
+
+          <div
+            data-card
+            className="snap-start shrink-0 flex flex-col justify-center w-[86vw] sm:w-[62vw] md:w-[380px] py-6 md:py-0"
+          >
             <p className="eyebrow mb-3">— More</p>
-            <h3 className="font-display text-2xl md:text-4xl text-white max-w-xs text-center md:text-left">
+            <h3 className="font-display text-2xl md:text-4xl text-white max-w-xs">
               Want to see <span className="gradient-text">more</span>?
             </h3>
             <a
@@ -129,12 +198,25 @@ const Portfolio = () => {
           </div>
         </div>
       </div>
+
+      <div className="container-x mt-8 md:mt-10">
+        <div className="h-px bg-white/[0.08] relative overflow-hidden">
+          <div
+            ref={barRef}
+            className="absolute inset-y-0 left-0 bg-gradient-to-r from-amber-400 to-amber-600"
+            style={{ width: '6%' }}
+          />
+        </div>
+      </div>
     </section>
   )
 }
 
 const Card = ({ p }) => (
-  <div className="w-full md:min-w-[680px] md:w-[680px] shrink-0">
+  <div
+    data-card
+    className="snap-start shrink-0 w-[86vw] sm:w-[62vw] md:w-[620px] lg:w-[680px]"
+  >
     <TiltCard max={5} className="group glass-metallic rounded-3xl overflow-hidden">
       <BrowserFrame url={p.links.site} title={p.title}>
         <LivePreview src={p.links.site} title={p.title} />
@@ -146,16 +228,18 @@ const Card = ({ p }) => (
             {p.n} / {p.tag}
           </span>
           <div className="flex items-center gap-2">
-            <a
-              href={p.links.github}
-              target="_blank"
-              rel="noopener"
-              aria-label="GitHub"
-              data-cursor="hover"
-              className="w-10 h-10 grid place-items-center rounded-full glass text-white/90 hover:text-amber-400 transition-colors"
-            >
-              <AiOutlineGithub />
-            </a>
+            {p.links.github && (
+              <a
+                href={p.links.github}
+                target="_blank"
+                rel="noopener"
+                aria-label="GitHub"
+                data-cursor="hover"
+                className="w-10 h-10 grid place-items-center rounded-full glass text-white/90 hover:text-amber-400 transition-colors"
+              >
+                <AiOutlineGithub />
+              </a>
+            )}
             <a
               href={p.links.site}
               target="_blank"
@@ -291,7 +375,7 @@ const PreviewSkeleton = () => (
         <span className="absolute inset-0 rounded-full border-2 border-white/10" />
         <span className="absolute inset-0 rounded-full border-2 border-transparent border-t-amber-400 animate-spin" />
       </div>
-      <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/40">
+      <p className="px-6 text-center font-mono text-[9px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.3em] text-white/40 text-balance">
         Waking live site… (Render cold-start)
       </p>
     </div>
