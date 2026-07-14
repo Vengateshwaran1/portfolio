@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { DiReact, DiNodejsSmall, DiMongodb, DiJavascript1, DiPython, DiGit } from 'react-icons/di'
 import { SiTailwindcss, SiOracle, SiCplusplus, SiDocker, SiAmazonec2, SiExpress, SiSocketdotio, SiRedis, SiPostman } from 'react-icons/si'
-import { HiOutlineSparkles, HiOutlineShieldCheck, HiOutlineCubeTransparent, HiOutlineBolt } from 'react-icons/hi2'
+import { HiOutlineSparkles, HiOutlineCubeTransparent, HiOutlineBolt } from 'react-icons/hi2'
 import Reveal from './primitives/Reveal'
 import SplitText from './primitives/SplitText'
 import TiltCard from './primitives/TiltCard'
@@ -21,7 +21,7 @@ const Skills = () => {
 
         <div className="mt-10 md:mt-16 grid grid-cols-12 gap-3 md:gap-5">
           {/* Big card: Frontend */}
-          <Bento className="col-span-12 md:col-span-7 md:row-span-2 min-h-[280px] md:min-h-[360px]">
+          <Bento className="col-span-12 md:col-span-7 md:row-span-3 min-h-[280px] md:min-h-[360px]">
             <div className="flex items-center justify-between mb-6">
               <Tag>Frontend</Tag>
               <HiOutlineSparkles className="text-amber-400" size={24} />
@@ -68,21 +68,8 @@ const Skills = () => {
             </div>
           </Bento>
 
-          {/* Security */}
-          <Bento className="col-span-12 md:col-span-5 min-h-[140px] md:min-h-[170px] relative overflow-hidden">
-            <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full bg-amber-400/10 blur-3xl" />
-            <div className="flex items-start justify-between">
-              <Tag>Security</Tag>
-              <HiOutlineShieldCheck className="text-amber-400" size={24} />
-            </div>
-            <h3 className="mt-4 font-display text-2xl text-white font-bold">Thinking like an attacker.</h3>
-            <p className="mt-3 text-white/55 text-sm">
-              Web pentest fundamentals, OWASP Top 10, secure auth flows, headers, and rate-limit design.
-            </p>
-          </Bento>
-
           {/* Data */}
-          <Bento className="col-span-6 md:col-span-3 min-h-[130px] md:min-h-[170px]">
+          <Bento className="col-span-6 md:col-span-5 min-h-[130px] md:min-h-[170px]">
             <Tag>Data</Tag>
             <div className="mt-5 space-y-3">
               {[
@@ -98,7 +85,7 @@ const Skills = () => {
           </Bento>
 
           {/* DevOps */}
-          <Bento className="col-span-6 md:col-span-4 min-h-[130px] md:min-h-[170px]">
+          <Bento className="col-span-6 md:col-span-5 min-h-[130px] md:min-h-[170px]">
             <Tag>DevOps · Cloud</Tag>
             <div className="mt-5 space-y-3">
               <div className="flex items-center gap-3">
@@ -118,20 +105,6 @@ const Skills = () => {
                 <span className="text-white/80 text-sm">Git</span>
               </div>
             </div>
-          </Bento>
-
-          {/* Currently learning */}
-          <Bento className="col-span-12 md:col-span-5 min-h-[130px] md:min-h-[170px] relative overflow-hidden">
-            <div className="flex items-start justify-between">
-              <Tag>Currently Learning</Tag>
-              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-            </div>
-            <h3 className="mt-4 font-display text-2xl text-white font-bold">
-              Cybersecurity <span className="text-amber-400">·</span> Systems design <span className="text-amber-400">·</span> OWASP
-            </h3>
-            <p className="mt-3 text-white/55 text-sm">
-              Deepening on web security, secure auth flows, and scalable backend architectures.
-            </p>
           </Bento>
         </div>
       </div>
