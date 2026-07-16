@@ -317,6 +317,367 @@
   }
 }
 
+/* ═══════════════════════════════════════════════════════════
+   MOBILE HERO — Premium Editorial Design System
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── 1. Cinematic Portrait Header ────────────────────────── */
+.mobile-hero-portrait-wrap {
+  position: relative;
+  width: 100%;
+  height: 56vh;
+  min-height: 340px;
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.mobile-hero-portrait-inner {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.mobile-hero-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  filter: grayscale(0.85) contrast(1.1) brightness(1.1);
+  mix-blend-mode: luminosity;
+}
+
+.mobile-hero-portrait-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    /* Strong bottom fade for text readability */
+    linear-gradient(to top, var(--bg) 0%, rgba(7, 8, 11, 0.85) 28%, rgba(7, 8, 11, 0.3) 55%, transparent 80%),
+    /* Subtle violet tint */
+    linear-gradient(135deg, rgba(109, 40, 217, 0.12) 0%, transparent 60%),
+    /* Edge vignette */
+    radial-gradient(ellipse 80% 80% at 50% 40%, transparent 40%, rgba(7, 8, 11, 0.5) 100%);
+}
+
+/* ── Floating status pills ── */
+.mobile-hero-pills {
+  position: absolute;
+  top: 4.5rem;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.mobile-hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+}
+
+.mobile-hero-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34D399;
+  box-shadow: 0 0 8px 1px rgba(52, 211, 153, 0.5);
+  animation: pulseRing 2.4s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+/* ── 2. Content area ─────────────────────────────────────── */
+.mobile-hero-content {
+  position: relative;
+  margin-top: -2rem;       /* Overlap the portrait fade */
+  padding-bottom: 1rem;
+  z-index: 5;
+}
+
+/* Role tag */
+.mobile-hero-role-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 0.75rem;
+}
+
+.mobile-hero-role-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px 1px rgba(167, 139, 250, 0.4);
+}
+
+/* ── Name typography ── */
+.mobile-hero-name {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 9.5vw, 3.2rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.mobile-hero-name-accent {
+  background: linear-gradient(135deg, #F8F9FB 0%, #C5C9D6 28%, #A78BFA 65%, #6D28D9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── Gradient divider ── */
+.mobile-hero-divider {
+  height: 2px;
+  margin-top: 1rem;
+  margin-bottom: 1.25rem;
+  border-radius: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(167, 139, 250, 0.7) 0%,
+    rgba(197, 201, 214, 0.3) 40%,
+    transparent 80%
+  );
+}
+
+/* ── Statement ── */
+.mobile-hero-statement {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, 0.92);
+  text-wrap: balance;
+}
+
+.mobile-hero-desc {
+  margin-top: 0.625rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.4);
+  text-wrap: pretty;
+}
+
+/* ── 4. CTA buttons ──────────────────────────────────────── */
+.mobile-hero-ctas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.mobile-hero-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border-radius: 14px;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #07080B;
+  background: linear-gradient(135deg, #FBBF24, #F59E0B);
+  box-shadow:
+    0 2px 12px rgba(251, 191, 36, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: transform 120ms ease, box-shadow 200ms ease;
+}
+
+.mobile-hero-cta-primary:active {
+  transform: scale(0.97);
+  box-shadow: 0 1px 6px rgba(251, 191, 36, 0.3);
+}
+
+.mobile-hero-cta-glass {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border-radius: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 120ms ease, border-color 200ms ease;
+}
+
+.mobile-hero-cta-glass:active {
+  transform: scale(0.97);
+  border-color: rgba(167, 139, 250, 0.4);
+}
+
+/* ── Socials row ── */
+.mobile-hero-socials {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.mobile-hero-social-icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 200ms ease, border-color 200ms ease;
+}
+
+.mobile-hero-social-icon:active {
+  color: var(--accent);
+  border-color: rgba(167, 139, 250, 0.3);
+}
+
+.mobile-hero-social-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 0 0.25rem;
+}
+
+.mobile-hero-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.02em;
+}
+
+/* ── 5. Live projects section ────────────────────────────── */
+.mobile-hero-live-section {
+  margin-top: 1.75rem;
+}
+
+.mobile-hero-live-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.mobile-hero-live-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.mobile-hero-live-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.04em;
+}
+
+.mobile-hero-live-scroll {
+  display: flex;
+  gap: 0.625rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 4px;
+  /* Bleed past container padding for edge-to-edge scroll */
+  margin-left: -1rem;
+  margin-right: -1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.mobile-hero-live-card {
+  flex: 0 0 auto;
+  width: calc(50vw - 1.5rem);
+  min-width: 150px;
+  padding: 1rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  transition: border-color 200ms ease, background 200ms ease;
+}
+
+.mobile-hero-live-card:active {
+  border-color: rgba(167, 139, 250, 0.3);
+  background: rgba(167, 139, 250, 0.06);
+}
+
+.mobile-hero-live-emoji {
+  font-size: 20px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.mobile-hero-live-name {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: -0.01em;
+}
+
+.mobile-hero-live-what {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.mobile-hero-live-arrow {
+  position: absolute;
+  top: 0.875rem;
+  right: 0.875rem;
+  color: rgba(255, 255, 255, 0.15);
+  transition: color 200ms ease;
+}
+
+.mobile-hero-live-card:active .mobile-hero-live-arrow {
+  color: var(--accent);
+}
+
+/* ── PulseRing keyframe (used by live dots) ── */
+@keyframes pulseRing {
+  0%   { transform: scale(1); opacity: 0.7; }
+  70%  { transform: scale(2.2); opacity: 0; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;

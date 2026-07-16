@@ -7,12 +7,17 @@ const ShaderBackground = () => {
   useEffect(() => {
     const canvas = ref.current
     if (!canvas) return
-    const reduce = prefersReducedMotion()
+
+    // The fragment shader runs 5 octaves of fbm per pixel per frame. On a
+    // phone that's a constant GPU/battery drain for a background, so mobile
+    // paints a single still frame instead of animating.
+    const mobile = window.matchMedia('(max-width: 767px)').matches
+    const still = prefersReducedMotion() || mobile
 
     const gl = canvas.getContext('webgl', { antialias: false, alpha: true })
     if (!gl) return
 
-    const dpr = Math.min(window.devicePixelRatio || 1, 1.5)
+    const dpr = mobile ? 1 : Math.min(window.devicePixelRatio || 1, 1.5)
 
     const resize = () => {
       canvas.width = window.innerWidth * dpr
@@ -22,7 +27,6 @@ const ShaderBackground = () => {
       gl.viewport(0, 0, canvas.width, canvas.height)
     }
     resize()
-    window.addEventListener('resize', resize)
 
     const vsrc = `attribute vec2 p; void main(){ gl_Position = vec4(p,0.0,1.0); }`
     const fsrc = `
@@ -103,23 +107,31 @@ const ShaderBackground = () => {
 
     let mx = 0.5, my = 0.5
     const onMove = (e) => { mx = e.clientX / window.innerWidth; my = 1 - e.clientY / window.innerHeight }
-    window.addEventListener('mousemove', onMove, { passive: true })
+    if (!still) window.addEventListener('mousemove', onMove, { passive: true })
 
     let start = performance.now()
     let raf
     const render = () => {
-      const time = reduce ? 0 : (performance.now() - start) / 1000
+      const time = still ? 0 : (performance.now() - start) / 1000
       gl.uniform2f(uRes, canvas.width, canvas.height)
       gl.uniform1f(uT, time)
       gl.uniform2f(uM, mx, my)
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
-      if (!reduce) raf = requestAnimationFrame(render)
+      if (!still) raf = requestAnimationFrame(render)
     }
     render()
 
+    // In still mode there's no rAF loop, so a resize must repaint once or
+    // the canvas stretches (e.g. mobile URL bar collapse, rotation).
+    const onResize = () => {
+      resize()
+      if (still) render()
+    }
+    window.addEventListener('resize', onResize)
+
     return () => {
       cancelAnimationFrame(raf)
-      window.removeEventListener('resize', resize)
+      window.removeEventListener('resize', onResize)
       window.removeEventListener('mousemove', onMove)
     }
   }, [])

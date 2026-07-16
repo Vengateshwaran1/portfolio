@@ -6,7 +6,7 @@ import { scrollTo } from './providers/LenisProvider'
 
 const Footer = () => {
   return (
-    <footer className="relative pt-16 md:pt-24 pb-8 md:pb-10 border-t border-white/[0.06] mt-8 md:mt-12">
+    <footer className="relative pt-16 md:pt-24 pb-[calc(2rem+env(safe-area-inset-bottom))] md:pb-10 border-t border-white/[0.06] mt-8 md:mt-12">
       <div className="container-x">
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 md:gap-10 mb-12 md:mb-20">
           <div className="max-w-xl">
