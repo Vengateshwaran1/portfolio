@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, useCallback, useLayoutEffect } from 'react
 import { motion } from 'framer-motion'
 import { HiArrowDownTray, HiArrowUpRight } from 'react-icons/hi2'
 import { AiOutlineGithub, AiOutlineLinkedin, AiOutlineInstagram } from 'react-icons/ai'
-import profilepic from '../assets/profile.png'
+import profilepic from '../assets/profile.webp'
 import MagneticButton from './primitives/MagneticButton'
 import ResumeModal from './ResumeModal'
 import { scrollTo } from './providers/LenisProvider'
@@ -15,13 +15,7 @@ const socials = [
   { icon: AiOutlineInstagram, href: 'https://www.instagram.com/vengateshwaran_', label: 'Instagram' },
 ]
 
-/* The hero's claim is that these are deployed and serving traffic right now —
-   the same claim the Work section backs up with live embeds. */
-const running = [
-  { name: 'Zephyr', what: 'Realtime chat', href: 'https://zephyr-dxd8.onrender.com/' },
-  { name: 'Echo Connect', what: 'Synced audio', href: 'https://echo-connect.onrender.com/' },
-  { name: 'Pipeline Forge', what: 'Node pipelines', href: 'https://pipeline-forge-two.vercel.app/' },
-]
+
 
 /* ── Splits a string into per-char spans the scroll timeline can scatter ── */
 const SplitChars = ({ text, className = '' }) => (
@@ -38,30 +32,7 @@ const SplitChars = ({ text, className = '' }) => (
   </span>
 )
 
-/* ── Coimbatore wall clock. Real time, his timezone — the visitor is
-      looking at his working day, not a decoration. ── */
-const IST = new Intl.DateTimeFormat('en-GB', {
-  timeZone: 'Asia/Kolkata',
-  hour: '2-digit',
-  minute: '2-digit',
-  second: '2-digit',
-  hour12: false,
-})
 
-const LiveClock = () => {
-  const [now, setNow] = useState(() => IST.format(new Date()))
-
-  useEffect(() => {
-    const id = setInterval(() => setNow(IST.format(new Date())), 1000)
-    return () => clearInterval(id)
-  }, [])
-
-  return (
-    <span className="tabular-nums" aria-label={`Local time in Coimbatore, ${now}`}>
-      {now} <span className="text-white/30">IST</span>
-    </span>
-  )
-}
 
 const Hero = () => {
   const [resumeOpen, setResumeOpen] = useState(false)
@@ -79,7 +50,7 @@ const Hero = () => {
   const ctaRef = useRef(null)
   const eyebrowRef = useRef(null)
   const horizonRef = useRef(null)
-  const liveRef = useRef(null)
+
   const gradientLineRef = useRef(null)
 
   /* ── Auto-fit name to fill container width ──────────── */
@@ -220,8 +191,7 @@ const Hero = () => {
         opacity: 0, x: -60, filter: 'blur(4px)', ease: 'power2.in', duration: 0.14,
       }, 0.1)
 
-      /* Running strip drops away last — it's the anchor, so it holds longest */
-      tl.to(liveRef.current, { opacity: 0, y: 30, ease: 'power2.in', duration: 0.15 }, 0.12)
+
 
       /* Portrait resolves into a framed still */
       tl.fromTo(viewfinderRef.current, { opacity: 0 }, { opacity: 1, ease: 'none', duration: 0.12 }, 0.16)
@@ -439,56 +409,6 @@ const Hero = () => {
                   </div>
                 </div>
 
-                {/* ═══ SIGNATURE: everything named here is deployed and serving
-                     traffic right now — the hero's whole claim, stated as fact. ═══ */}
-                <motion.div
-                  ref={liveRef}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.9, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                  className="relative z-10 mt-10 md:mt-14"
-                >
-                  <div className="hero-rule w-full" />
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5 md:gap-8 pt-5 md:pt-6">
-                    <div className="flex items-center gap-3 shrink-0">
-                      <span className="hero-live-dot" />
-                      <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/40">
-                        Running now
-                      </span>
-                    </div>
-
-                    <ul className="flex flex-wrap items-center gap-x-8 gap-y-3 md:gap-x-12">
-                      {running.map((r) => (
-                        <li key={r.name}>
-                          <a
-                            href={r.href}
-                            target="_blank"
-                            rel="noopener"
-                            data-cursor="view"
-                            data-cursor-label="Open"
-                            className="group block"
-                          >
-                            <span className="block font-display text-sm md:text-base font-semibold text-white/85 group-hover:text-amber-400 transition-colors">
-                              {r.name}
-                            </span>
-                            <span className="block font-mono text-[10px] uppercase tracking-[0.2em] text-white/30 mt-0.5">
-                              {r.what}
-                            </span>
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="flex items-center gap-3 shrink-0 font-mono text-[11px] text-white/45">
-                      <LiveClock />
-                      <span className="w-px h-4 bg-white/10" />
-                      <span className="flex items-center gap-1.5 text-emerald-400/80">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                        Available
-                      </span>
-                    </div>
-                  </div>
-                </motion.div>
               </div>
 
               {/* ═══ ABOUT (overlay on desktop, below on mobile) ═══ */}

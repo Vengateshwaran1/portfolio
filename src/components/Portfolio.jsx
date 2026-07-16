@@ -7,6 +7,7 @@ import SplitText from './primitives/SplitText'
 import TiltCard from './primitives/TiltCard'
 import { prefersReducedMotion } from '../lib/utils'
 
+
 /* The rail starts flush with .container-x's left edge at every width, so the
    first card lines up with the heading above it. */
 const RAIL_GUTTER = 'max(1rem, calc((100vw - 1320px) / 2 + 2.5rem))'
@@ -217,12 +218,12 @@ const Card = ({ p }) => (
     data-card
     className="snap-start shrink-0 w-[86vw] sm:w-[62vw] md:w-[620px] lg:w-[680px]"
   >
-    <TiltCard max={5} className="group glass-metallic rounded-3xl overflow-hidden">
+    <TiltCard max={5} className="group glass-metallic rounded-3xl overflow-hidden h-full flex flex-col">
       <BrowserFrame url={p.links.site} title={p.title}>
-        <LivePreview src={p.links.site} title={p.title} />
+        <Preview p={p} />
       </BrowserFrame>
 
-      <div className="p-4 md:p-7">
+      <div className="p-4 md:p-7 flex flex-col flex-1">
         <div className="flex items-start justify-between gap-4 mb-3">
           <span className="font-mono text-xs uppercase tracking-[0.3em] text-amber-400/90">
             {p.n} / {p.tag}
@@ -255,10 +256,10 @@ const Card = ({ p }) => (
         <h3 className="font-display text-2xl md:text-4xl text-white font-bold tracking-tight">
           {p.title}
         </h3>
-        <p className="mt-3 text-white/65 text-sm md:text-base max-w-lg">
+        <p className="mt-3 text-white/65 text-sm md:text-base max-w-lg line-clamp-3">
           {p.description}
         </p>
-        <div className="mt-5 flex flex-wrap gap-2">
+        <div className="mt-auto pt-5 flex flex-wrap gap-2">
           {p.stack.map((s) => (
             <span
               key={s}
@@ -302,6 +303,10 @@ const BrowserFrame = ({ url, title, children }) => {
 
 const RENDER_W = 1440
 const RENDER_H = 900
+
+/* Show live iframe previews on all screens. */
+const Preview = ({ p }) =>
+  <LivePreview src={p.links.site} title={p.title} />
 
 const LivePreview = ({ src, title }) => {
   const [loaded, setLoaded] = useState(false)

@@ -26,9 +26,28 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Lenis keeps smooth-scrolling the page underneath the open sheet unless
+  // it's told to stop, which reads as the menu sliding around while you tap.
+  useEffect(() => {
+    const lenis = window.__lenis
+    if (open) {
+      lenis?.stop()
+      document.body.classList.add('lenis-stopped')
+    } else {
+      lenis?.start()
+      document.body.classList.remove('lenis-stopped')
+    }
+    return () => {
+      window.__lenis?.start()
+      document.body.classList.remove('lenis-stopped')
+    }
+  }, [open])
+
   const go = (id) => {
     setOpen(false)
-    scrollTo(`#${id}`, -40)
+    // Deferred a frame: closing the sheet is what restarts Lenis, and a
+    // scrollTo issued while it's still stopped is dropped on the floor.
+    requestAnimationFrame(() => scrollTo(`#${id}`, -40))
   }
 
   return (
@@ -109,7 +128,7 @@ const Navbar = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 md:hidden bg-ink-950/95 backdrop-blur-2xl flex flex-col items-center justify-center"
+            className="fixed inset-0 z-40 md:hidden bg-ink-950/95 backdrop-blur-2xl flex flex-col items-center justify-center overflow-y-auto px-6 py-24 pb-[calc(6rem+env(safe-area-inset-bottom))]"
           >
             <ul className="flex flex-col items-center gap-6">
               {links.map((l, i) => (
