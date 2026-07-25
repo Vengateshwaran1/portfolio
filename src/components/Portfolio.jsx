@@ -85,6 +85,14 @@ const Portfolio = () => {
     const rail = railRef.current
     const bar = barRef.current
     if (!rail || !bar) return
+    // Desktop pans via GSAP transform on the track, not native scrollLeft —
+    // a focused child (e.g. tab into a card link) can still nudge scrollLeft
+    // via scrollIntoView, which would then compose with the transform and
+    // open the section on the wrong card. Reset it so desktop always enters at 0.
+    if (window.matchMedia('(min-width: 768px)').matches) {
+      if (rail.scrollLeft !== 0) rail.scrollLeft = 0
+      return
+    }
     const max = rail.scrollWidth - rail.clientWidth
     bar.style.width = `${Math.max(6, (max > 0 ? rail.scrollLeft / max : 0) * 100)}%`
   }, [])
@@ -112,7 +120,10 @@ const Portfolio = () => {
     mm.add('(min-width: 768px)', () => {
       const distance = () => Math.max(0, track.scrollWidth - rail.clientWidth)
 
-      const tween = gsap.to(track, {
+      gsap.set(track, { x: 0 })
+      rail.scrollLeft = 0
+
+      const tween = gsap.fromTo(track, { x: 0 }, {
         x: () => -distance(),
         ease: 'none',
         force3D: true,
@@ -132,7 +143,11 @@ const Portfolio = () => {
         },
       })
 
-      return () => tween.scrollTrigger?.kill()
+      return () => {
+        tween.scrollTrigger?.kill()
+        tween.kill()
+        gsap.set(track, { x: 0 })
+      }
     })
 
     const onLoad = () => ScrollTrigger.refresh()
